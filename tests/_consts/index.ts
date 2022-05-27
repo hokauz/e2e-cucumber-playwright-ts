@@ -1,5 +1,5 @@
 const URLs = {
-  home: 'https://google.com',
+  home: 'https://investiremque.com.br/',
 }
 
 export { URLs };

@@ -1,17 +1,22 @@
 import { When, Then, Given }  from '@cucumber/cucumber';
-import { Greeter }  from '../../src/index';
 import { HomePage }  from '../_pages/home';
 
 import { expect } from '@playwright/test';
 
-Given('a test', async function () {
-  await HomePage.open()
+const checks = {}
+
+Given('usuário entrando no site pela página home', async function () {
+  await HomePage.open();
 });
 
-When('the greeter says hello', function () {
-  this.whatIHeard = Greeter.sayHello()
+When('quando a página carregar', async function () {
+  checks['title'] = await HomePage.getTitle();
 });
 
-Then('I should have heard {string}', function (expectedResponse) {
-  expect(this.whatIHeard).toBe(expectedResponse)
+Then('deve existir um título', async function () {
+  await expect(checks['title']).toBeDefined();
+});
+
+Then('o título deve ser {string}', async function (title) {
+  await expect(checks['title']).toBe(title);
 });

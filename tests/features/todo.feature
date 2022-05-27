@@ -1,6 +1,7 @@
-Feature: Greeting
+Feature: HomePage
 
-  Scenario: Say hello
-    Given a test
-    When the greeter says hello
-    Then I should have heard "hello"
+  Scenario: Enter
+    Given usuário entrando no site pela página home
+    When quando a página carregar
+    Then deve existir um título 
+    Then o título deve ser "seu comparador de fundos de investimento de todo o mercado"
