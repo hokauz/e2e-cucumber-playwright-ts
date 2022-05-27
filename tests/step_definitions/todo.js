@@ -1,7 +1,7 @@
-import { When, Then, Given }  from '@cucumber/cucumber';
-import { HomePage }  from '../_pages/home';
+const { When, Then, Given }  = require('@cucumber/cucumber');
+const { HomePage } = require('../_pages/home');
 
-import { expect } from '@playwright/test';
+const { expect } = require('@playwright/test');
 
 const checks = {}
 

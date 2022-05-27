@@ -1,4 +1,4 @@
-import { URLs } from '../_consts';
+const { URLs } = require('../_consts');
 
 const locators = {
   title: 'h1'
@@ -14,4 +14,4 @@ class HomePage {
   }
 }
 
-export { HomePage }
+module.exports = { HomePage };
