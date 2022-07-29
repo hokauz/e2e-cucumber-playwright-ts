@@ -1,12 +1,16 @@
 
 import { Before, BeforeAll, AfterAll, After, setDefaultTimeout } from '@cucumber/cucumber';
-import { chromium } from 'playwright';
+import { Page, BrowserContext, chromium, Browser } from 'playwright';
 
 setDefaultTimeout(60000);
 
+let browser: Browser;
+let context: BrowserContext;
+let page   : Page;
+
 // launch the browser
 BeforeAll(async function () {
-  global.browser = await chromium.launch({
+  browser = await chromium.launch({
     headless: false,
     slowMo: 1000,
   });
@@ -14,17 +18,19 @@ BeforeAll(async function () {
 
 // close the browser
 AfterAll(async function () {
-  await global.browser.close();
+  await browser.close();
 });
 
 // Create a new browser context and page per scenario
 Before(async function () {
-  global.context = await global.browser.newContext();
-  global.page = await global.context.newPage();
+  context = await browser.newContext();
+  page = await context.newPage();
 });
 
 // Cleanup after each scenario
 After(async function () {
-  await global.page.close();
-  await global.context.close();
+  await page.close();
+  await context.close();
 });
+
+export { page, context, browser };

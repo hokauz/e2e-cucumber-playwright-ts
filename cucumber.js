@@ -5,7 +5,7 @@ module.exports = {
       'ts-node/register',
     ],
     require: [
-      'tests/_configs/hooks.ts',
+      'tests/_configs/index.ts',
       'tests/step_definitions/**/*.ts'
     ],
     publishQuiet: true,
